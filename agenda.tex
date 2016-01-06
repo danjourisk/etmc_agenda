@@ -1,0 +1,398 @@
+% Include macros
+\input pstricks
+\input epsf
+\input colortab
+
+% Page Layout
+\special{papersize=11.692in,8.267in}
+\nopagenumbers
+\hsize 5.5in
+\vsize 7in
+\hoffset -0.70in
+\voffset -0.5in
+
+\newdimen\boxmargin
+\boxmargin = 2pt
+
+\newdimen\boxwidth 
+\boxwidth = \hsize
+\global\advance\boxwidth by 2\boxmargin
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                  Input Info                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%% Meeting Officers
+\def\president{Charles Li}
+\def\saa{Xian He}
+
+%% Meeting Roles
+\def\tmname{Lei Wang}\def\tmproject{CL4}
+\def\gename{Arvind Duray}\def\geproject{CL2}
+\def\timername{Hua Liu}\def\timerproject{CL4}
+\def\gramname{Teela Zhao}\def\gramproject{CL1}
+\def\ahname{Liyu Huang}\def\ahproject{CL1}
+\def\ttmname{Melanie Wang}\def\ttmproject{CL4}
+\def\ttename{Tao Zhang}\def\tteproject{CL8}
+\def\firstevaluatorname{Xiao Qin}\def\firstevaluatorproject{CL1}
+\def\secondevaluatorname{Xian He}\def\secondevaluatorproject{CL4}
+\def\firstspeakername{Charles Li}\def\firstspeakerproject{ACS3}\def\firstspeakertitle{Reason}
+\def\secondspeakername{Xiao Qin}\def\secondspeakerproject{CC1}\def\secondspeakertitle{Yoga and me}
+
+%% Meeting theme
+\def\themeinfo{Movie}
+
+%% Meeting time
+\def\dateinfo{2015 Oct 30th}
+\def\timeinfo{12:05 --13:30}
+
+%% Meeting venue
+\def\venueinfo{Conf CN BJ WJ 1F (14) Mexico City, Ericsson Tower 1F}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                  Processing Macro             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ifstringeq#1#2{\def\stra{#1}\def\strb{#2}\ifx\stra\strb}
+
+\def\tm[#1]{%
+    \ifstringeq{#1}{project}\tmproject\fi
+    \ifstringeq{#1}{name}\tmname\fi} 
+\def\ge[#1]{%
+    \ifstringeq{#1}{project}\geproject\fi
+    \ifstringeq{#1}{name}\gename\fi} 
+\def\timer[#1]{%
+    \ifstringeq{#1}{project}\timerproject\fi
+    \ifstringeq{#1}{name}\timername\fi} 
+\def\gram[#1]{%
+    \ifstringeq{#1}{project}\gramproject\fi
+    \ifstringeq{#1}{name}\gramname\fi} 
+\def\ah[#1]{%
+    \ifstringeq{#1}{project}\ahproject\fi
+    \ifstringeq{#1}{name}\ahname\fi} 
+\def\ttm[#1]{%
+    \ifstringeq{#1}{project}\ttmproject\fi
+    \ifstringeq{#1}{name}\ttmname\fi} 
+\def\tte[#1]{%
+    \ifstringeq{#1}{project}\tteproject\fi
+    \ifstringeq{#1}{name}\ttename\fi} 
+\def\fstevl[#1]{%
+    \ifstringeq{#1}{project}\firstevaluatorproject\fi
+    \ifstringeq{#1}{name}\firstevaluatorname\fi} 
+\def\scdevl[#1]{%
+    \ifstringeq{#1}{project}\secondevaluatorproject\fi
+    \ifstringeq{#1}{name}\secondevaluatorname\fi} 
+\def\fstspk[#1]{%
+    \ifstringeq{#1}{project}\firstspeakerproject\fi
+    \ifstringeq{#1}{name}\firstspeakername\fi
+    \ifstringeq{#1}{title}\firstspeakertitle\fi} 
+\def\scdspk[#1]{%
+    \ifstringeq{#1}{project}\secondspeakerproject\fi
+    \ifstringeq{#1}{name}\secondspeakername\fi
+    \ifstringeq{#1}{title}\secondspeakertitle\fi} 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                   Time Processing             %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\global\newcount\hour
+\global\newcount\min
+\global\newcount\sec
+\global\newcount\tmphour
+\global\newcount\tmpmin
+\global\newcount\tmpsec
+
+\hour = 12
+\min = 0
+\sec = 0
+
+\def\showtime{\ifnum\hour<10 0\number\hour\else\number\hour\fi
+                :\ifnum\min<10 0\number\min\else\number\min\fi}
+
+%#1 min, #2 sec
+\def\gotime#1:#2 { %
+    \tmphour = \hour %
+    \tmpmin = \min %
+    \tmpsec = \sec %
+    \advance\tmpmin by #1 %
+    \advance\tmpsec by #2 %
+    \ifnum\tmpsec <60 %
+        \global\sec = \tmpsec %
+    \else %
+        \global\advance\tmpmin by 1 %
+        \advance\tmpsec by -60 %
+        \global\sec = \tmpsec %
+        \global\min = \tmpmin %
+    \fi %
+    \ifnum\tmpmin<60 %
+        \global\min = \tmpmin %
+    \else%
+        \global\advance\tmphour by 1 %
+        \advance\tmpmin by -60 %
+        \global\min = \tmpmin %
+        \global\hour = \tmphour %
+    \fi} %
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                   Font Define                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\font\titlefont = cmbx12 scaled \magstep3
+\font\smalltitlefont = cmbx12 scaled \magstep2
+\font\subtitlefont = cmbx10 scaled \magstephalf
+\font\tabletitlefont = cmbx9
+\font\tablebodyfont = cmr9
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                   Color Define                %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcmykcolor{skyblue}{.5 .24 .02 0}
+\newcmykcolor{orange}{.03 .53 .74 0}
+\newcmykcolor{bamboogreen}{.31 .09 .47 0}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                   Main Title                  %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\title#1 {%
+\noindent
+\line{\hfil
+    \epsfxsize = .6in \epsfbox{tmlogo.eps}
+%    \vbox to .6in{\epsfxsize = .6in \epsfbox{tmlogo.eps}}
+    \hskip 10pt\raise .15in\hbox{\titlefont#1}\hfil}%
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                   Sub Title                   %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\subtitle[#1]#2 {%
+\medskip
+{\noindent\tabskip=0pt
+        \psframebox[fillstyle=solid,%
+                    framesep=2pt,%
+                    boxsep=false,%
+                    linewidth=0pt,%
+                    fillcolor=#1,%
+                    linecolor=#1]
+        {\hbox to \hsize{\white\subtitlefont\vphantom{pg}#2\hfil}}}%
+\medskip
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                  Theme                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\theme#1 {%
+\medskip
+\line{\smalltitlefont \hfil Today's Theme\thinspace:\thinspace#1\hfil}%        
+\medskip
+}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                  Time                         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\ttime#1#2 {% named to avoid key word time
+\smallskip
+\line{\hbox to .7in{\quad Time\hfil}#1\quad#2\hfil}%
+\smallskip
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                  Venue                        %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\def\venue#1 {%
+\smallskip
+\line{\hbox to .7in{\quad Venue\hfil}#1\hfil}%
+\smallskip
+}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                Output Routine                 %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\output{%
+    \offinterlineskip
+    \ifodd\pageno
+        \global\setbox254\vbox{%
+            \hrule 
+            \hbox{\vrule\kern\boxmargin
+                  \hbox to \hsize{\vphantom{\vrule height \boxmargin}\hfil}%
+                  \kern\boxmargin\vrule}%
+            \hbox{\vrule\kern\boxmargin
+                  \vtop to \vsize{\unvbox255\kern\boxmargin\vfill}%
+                  \kern\boxmargin\vrule}%
+            \hrule
+        }%
+    \else
+        \global\setbox253\vbox{%
+            \hrule
+            \hbox{\vrule\kern\boxmargin
+                  \hbox to \hsize{\vphantom{\vrule height \boxmargin}\hfil}%
+                  \kern\boxmargin\vrule}%
+            \hbox{\vrule\kern\boxmargin
+                  \vtop to \vsize{\unvbox255\kern\boxmargin\vfill}%
+                  \kern\boxmargin\vrule}%
+            \hrule
+        }%
+        \shipout\vbox{\hbox{\vtop{\unvbox254}\vtop{\unvbox253}}}%
+    \fi
+    \advancepageno
+}%
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                Main Body                      %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Ericsson Toastmasters Club}
+
+\subtitle[skyblue]{About Toastmasters Internaltional}
+
+Since 1924, Toastmasters International has been recognized
+as the leading organization dedicated to communication and 
+leadership skill development. Each week Toastmasters helps 
+more than a quarter million men and women of every ethnicity, 
+education level and profession build their competence in 
+communication so they can gain the confidence to lead others. 
+(For more information, please visit www.toastmasters.org)
+
+\subtitle[skyblue]{About Ericsson Toastmasters Club}
+
+Founded on September 27th, 2009 in Ericsson, Beijing. 
+ETMC creates components for people to live long, healthy 
+and happy. We make people laugh by the use of language. 
+We help you become strong by serving and leading your team. 
+Our mission is: Motivate to develop all members' potential. 
+Support each other, grow together! If you are interested in 
+our club, please contact VPM chen.huang@ericsson.com Huang Chen.
+
+{\offinterlineskip
+\medskip
+
+\moveleft\boxmargin\vbox{\hbox to \hsize{\vbox{\hrule width \boxwidth}\hss}}
+\kern 2pt
+\moveleft\boxmargin\vbox{\hbox to \hsize{\vbox{\hrule width \boxwidth}\hss}}
+}
+
+\theme{\themeinfo}
+\ttime{\dateinfo}{\timeinfo}
+\venue{\venueinfo}
+
+\subtitle[orange]{Important Notice}
+
+\item {1.} Please mute your phone during the meeting.
+\item {2.}Taboo: Politics, Religion, Race, Sex
+
+\subtitle[orange]{Competence Leadership Planning}
+
+\noindent CL project is a practical guide to becoming a better leader.
+\medskip
+
+\hbox to \hsize{\hfil\vbox{
+{\tabskip = 0pt
+\offinterlineskip
+\def\hruleskip{\vphantom{\vrule height 2pt}&&\cr%
+               \noalign{\hrule}% 
+               \vphantom{\vrule height 2pt}&&\cr}
+\halign{%
+    \vrule\hbox to 0.4\hsize{\quad#\quad\hfil}%
+        &\vrule\hbox to 0.25\hsize{\hfil\quad#\quad\hfil}%
+        &\vrule\hbox to 0.25\hsize{\quad#\quad\hfil}\vrule\cr
+    \noalign{\hrule}
+    \vphantom{\vrule height 2pt}&&\cr
+    \bf Role&\bf CL Project&\bf Owner\cr
+    \hruleskip
+    Toastmaster&\tm[project]&\tm[name]\cr
+    \hruleskip
+    General Evaluator&\ge[project]&\ge[name]\cr
+    \hruleskip
+    Timer&\timer[project]&\timer[name]\cr
+    \hruleskip
+    Grammarian&\gram[project]&\gram[name]\cr
+    \hruleskip
+    Ah-counter&\ah[project]&\ah[name]\cr
+    \hruleskip
+    Table Topic Master&\ttm[project]&\ttm[name]\cr
+    \hruleskip
+    Table Topic Evaluator&\tte[project]&\tte[name]\cr
+    \hruleskip
+    Evaluator 1&\fstevl[project]&\fstevl[name]\cr
+    \hruleskip
+    Evaluator 2&\scdevl[project]&\scdevl[name]\cr
+    \vphantom{\vrule height 2pt}&&\cr
+    \noalign{\hrule}
+   } 
+}}\hfil}
+\break
+
+
+%% page 2 meeting agenda
+
+\vfill
+\hbox{\hfil\vbox{%
+    
+    \offinterlineskip\tablebodyfont
+
+    \def\titlerow#1#2#3#4#5{%
+        \bf#1&\bf#2&\bf#3&\bf#4&\bf#5\cr\noalign{\hrule}}%
+
+    \def\sessionrow#1{%
+        \CC\bamboogreen&\bamboogreen&\bamboogreen&\bamboogreen&\bamboogreen\cr
+             \noalign{\strut\hfil#1\hfil}\noalign{\hrule}%
+        \ECC}
+
+    \def\entryrow#1#2#3#4#5{\showtime&#1&#2&#3&#4\expandafter\gotime#5 \cr\noalign{\hrule}}%
+
+    \coloralign{%
+         \hbox to .12\hsize{\strut\hfil#\hfil}%  % Time
+        &\hbox to .25\hsize{\ #\hfil}%           % Role
+        &\hbox to .35\hsize{\ #\hfil}%          % Conference Session
+        &\hbox to .15\hsize{\ #\hfil}%           % Member
+        &\hbox to .13\hsize{\ \hfil#\hfil}\cr
+%        \noalign{\hrule}
+        \titlerow{Time}{Role}{Conference Session}{Member}{Duration} 
+%
+        \sessionrow{Welcoming Session}
+        \entryrow{}{Arrival Time}{All}{5 min}{5:0}
+        \entryrow{President}{Opening Speech}{\president}{1--2 min}{2:0}
+        \entryrow{Toastmaster}{Welcome Speech}{\tm[name]} {2--3 min}{3:0}
+        \entryrow{Toastmaster}{Greeting Guests}{\tm[name]} {1--2 min}{2:0}
+        \entryrow{Toastmaster}{Introduce General Evaluator}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{General Evaluator}{Introduce Evaluation Team}{\ge[name]}{1--2 min}{2:0}
+        \entryrow{Timer}{Explain the Role}{\timer[name]}{1--2 min}{2:0}
+        \entryrow{Grammarian}{Explain the Role}{\gram[name]}{2--3 min}{3:0}
+        \entryrow{Ah Counter}{Explain the Role}{\ah[name]}{1--2 min}{2:0}
+%
+        \sessionrow{Table Topic \& Sharing Session}
+        \entryrow{Toastmaster}{Introduce Table Topic Master}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Table Topic Master}{Conduct Table Topic Session}{\ttm[name]}{15 min}{15:0}
+        \entryrow{Toastmaster}{Introduce Table Topic Evaluator}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Table Topic Evaluator}{Evaluate Table Topic Session}{\tm[name]}{4--6 min}{6:0}
+        \entryrow{Toastmaster}{New Free Talk Session}{\tm[name]}{4--5 min}{5:0}
+%
+        \sessionrow{Speech \& Evaluation Session}
+        \entryrow{Toastmaster}{Introduce Prepared Speaker 1}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Prepared Speaker 1}{\fstspk[project]--\fstspk[title]}{\fstspk[name]}{5--7 min}{7:0}
+        \entryrow{}{Make Comment to Speaker 1}{All}{1 min}{1:0}
+        \entryrow{Toastmaster}{Introduce Prepared Speaker 2}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Prepared Speaker 2}{\scdspk[project]--\scdspk[title]}{\scdspk[name]}{5--7 min}{7:0}
+        \entryrow{}{Make Comment to Speaker 1}{All}{1 min}{1:0}
+        \entryrow{Toastmaster}{Introduce Speech Evaluator 1}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Evaluator 1}{Evaluate Speaker 1}{\tm[name]}{2--3 min}{3:0}
+        \entryrow{Toastmaster}{Introduce Speech Evaluator 2}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Evaluator 2}{Evaluate Speaker 2}{\tm[name]}{2--3 min}{3:0}
+%
+        \sessionrow{Report Session}
+        \entryrow{Toastmaster}{Call Up Report}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Grammarian}{Grammer Report}{\gram[name]}{1--2 min}{2:0}
+        \entryrow{Ah Counter}{Ah Report}{\ah[name]}{1--2 min}{2:0}
+        \entryrow{Timer}{Time Report}{\timer[name]}{1--2 min}{2:0}
+        \entryrow{Toastmaster}{Call General Evaluator}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{General Evaluator}{Evaluate Meeting}{\ge[name]}{4--5 min}{5:0}
+        \entryrow{}{Silence for Voting Best}{}{1 min}{1:0}
+        \entryrow{SAA}{Announce Best \& Photo Time}{\saa}{1 min}{1:0}
+        \entryrow{President}{Closing Speech}{\president}{1--2 min}{2:0}
+    }%
+}\hfil}
+
+\bye
