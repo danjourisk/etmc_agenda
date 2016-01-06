@@ -6,10 +6,14 @@
 % Page Layout
 \special{papersize=11.692in,8.267in}
 \nopagenumbers
-\hsize 5.5in
-\vsize 7in
+\hsize 5.4in
+\vsize 7.3in
 \hoffset -0.70in
 \voffset -0.5in
+
+\bigskipamount 9pt plus 30pt
+\medskipamount 6pt plus 20pt
+\smallskipamount 3pt plus 10pt 
 
 \newdimen\boxmargin
 \boxmargin = 2pt
@@ -136,6 +140,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                   Font Define                 %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\font\supertitlefont = cmbx12 scaled \magstep4
 \font\titlefont = cmbx12 scaled \magstep3
 \font\smalltitlefont = cmbx12 scaled \magstep2
 \font\subtitlefont = cmbx10 scaled \magstephalf
@@ -148,6 +153,7 @@
 \newcmykcolor{skyblue}{.5 .24 .02 0}
 \newcmykcolor{orange}{.03 .53 .74 0}
 \newcmykcolor{bamboogreen}{.31 .09 .47 0}
+\newcmykcolor{darkred}{.31 .81 .66 0}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                   Main Title                  %
@@ -219,7 +225,8 @@
                   \hbox to \hsize{\vphantom{\vrule height \boxmargin}\hfil}%
                   \kern\boxmargin\vrule}%
             \hbox{\vrule\kern\boxmargin
-                  \vtop to \vsize{\unvbox255\kern\boxmargin\vfill}%
+                  %\vtop to \vsize{\unvbox255\kern\boxmargin\vfill}%
+                  \vtop to \vsize{\unvbox255\kern\boxmargin}%
                   \kern\boxmargin\vrule}%
             \hrule
         }%
@@ -230,7 +237,8 @@
                   \hbox to \hsize{\vphantom{\vrule height \boxmargin}\hfil}%
                   \kern\boxmargin\vrule}%
             \hbox{\vrule\kern\boxmargin
-                  \vtop to \vsize{\unvbox255\kern\boxmargin\vfill}%
+                  %\vtop to \vsize{\unvbox255\kern\boxmargin\vfill}%
+                  \vtop to \vsize{\unvbox255\kern\boxmargin}%
                   \kern\boxmargin\vrule}%
             \hrule
         }%
@@ -243,7 +251,74 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %                Main Body                      %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% page 1
+{\noindent\tabskip=0pt
+        \psframebox[fillstyle=solid,%
+                    framesep=2pt,%
+                    boxsep=false,%
+                    linewidth=0pt,%
+                    fillcolor=darkred,%
+                    linecolor=darkred]
+        {\hbox to \hsize{\white\titlefont\vphantom{pg}vote for the best!\hfil}}}%
+\vskip .1\vsize
 
+\centerline{\epsfxsize = 2in \epsfbox{tmlogo.eps}}
+\vskip .05\vsize
+\centerline{Scan and vote}
+\centerline{\dateinfo}
+\vskip .1\vsize
+\centerline{\vbox{\vskip\baselineskip\hbox{\subtitlefont Best Speaker\hfil}%
+                  \vskip\baselineskip\hbox{\subtitlefont Best Table Topic Speaker\hfil}%
+                  \vskip\baselineskip\hbox{\subtitlefont Best Role\hfil}%
+                  \vskip\baselineskip\hbox{\subtitlefont Best Evaluator\hfil}}}
+
+
+\vfill
+\break
+
+% page 2
+
+\leftline{\epsfxsize = .6in \epsfbox{tmlogo.eps}}
+\vskip .02\vsize
+
+\vskip \baselineskip\centerline{\subtitlefont Welcome to}
+\vskip \baselineskip\centerline{\supertitlefont ERICSSON}
+\vskip \baselineskip\centerline{\supertitlefont TOASTMASTERS CLUB}
+
+\vskip .04\vsize
+
+{\noindent\tabskip=0pt
+        \psframebox[fillstyle=solid,%
+                    framesep=2pt,%
+                    boxsep=false,%
+                    linewidth=0pt,%
+                    fillcolor=darkred,%
+                    linecolor=darkred]
+        {\hbox to \hsize{\hfil\white\titlefont\vphantom{pg}Where Changes are Made!\hfil}}}%
+\medskip
+
+\vskip .08\vsize
+
+\noindent\centerline{\hbox{\vtop{\hbox{\epsfxsize = 1.5in \epsfbox{tmlogo.eps}}
+                                 \vskip .05\hsize
+                                 \hbox to 1.5in{\hfil ETMC Wechat\hfil}}%
+                           \hskip .1\hsize
+                           \vbox{\vskip\baselineskip\hbox{\subtitlefont $\surd$ Listening Skill}%
+                                 \vskip\baselineskip\hbox{\subtitlefont $\surd$ Communication Skill}%
+                                 \vskip\baselineskip\hbox{\subtitlefont $\surd$ Public Speaking Chance}%
+                                 \vskip\baselineskip\hbox{\subtitlefont $\surd$ Leadership Skill}%
+                                 \vfill}}}%
+
+
+\vskip .1\vsize
+\centerline{\subtitlefont A fantastic journey is about to begin...}
+
+
+\vfill
+\break
+
+
+% page 3
 \title{Ericsson Toastmasters Club}
 
 \subtitle[skyblue]{About Toastmasters Internaltional}
@@ -323,36 +398,43 @@ our club, please contact VPM chen.huang@ericsson.com Huang Chen.
     \noalign{\hrule}
    } 
 }}\hfil}
+\bigskip
 \break
 
+% page 4
 
-%% page 2 meeting agenda
 
-\vfill
-\hbox{\hfil\vbox{%
+%\hbox{\hfil\vbox{%
+%\vbox{
     
     \offinterlineskip\tablebodyfont
 
     \def\titlerow#1#2#3#4#5{%
-        \bf#1&\bf#2&\bf#3&\bf#4&\bf#5\cr\noalign{\hrule}}%
+        \bf#1&\bf#2&\bf#3&\bf#4&\bf#5\cr\noalign{\vskip 0pt plus 10pt\hrule}}%
 
     \def\sessionrow#1{%
         \CC\bamboogreen&\bamboogreen&\bamboogreen&\bamboogreen&\bamboogreen\cr
              \noalign{\strut\hfil#1\hfil}\noalign{\hrule}%
         \ECC}
 
-    \def\entryrow#1#2#3#4#5{\showtime&#1&#2&#3&#4\expandafter\gotime#5 \cr\noalign{\hrule}}%
+    %\def\entryrow#1#2#3#4#5{\showtime&#1&#2&#3&#4\expandafter\gotime#5 \cr\noalign{\vskip 0pt plus 10pt\hrule}}%
+    \def\entryrow#1#2#3#4#5{\noalign{\vskip 0pt plus 10pt}
+                            \showtime&#1&#2&#3&#4\expandafter\gotime#5 \cr
+                            \noalign{\vskip 0pt plus 10pt\hrule}}%
 
     \coloralign{%
-         \hbox to .12\hsize{\strut\hfil#\hfil}%  % Time
+         \hbox to .10\hsize{\strut\hfil#\hfil}%  % Time
         &\hbox to .25\hsize{\ #\hfil}%           % Role
         &\hbox to .35\hsize{\ #\hfil}%          % Conference Session
-        &\hbox to .15\hsize{\ #\hfil}%           % Member
+        &\hbox to .16\hsize{\ #\hfil}%           % Member
         &\hbox to .13\hsize{\ \hfil#\hfil}\cr
 %        \noalign{\hrule}
         \titlerow{Time}{Role}{Conference Session}{Member}{Duration} 
 %
-        \sessionrow{Welcoming Session}
+%        \sessionrow{Welcoming Session}
+        \CC\bamboogreen&\bamboogreen&\bamboogreen&\bamboogreen&\bamboogreen\cr
+             \noalign{\strut\hfil Welcoming Session \hfil}\noalign{\hrule}%
+        \ECC%}
         \entryrow{}{Arrival Time}{All}{5 min}{5:0}
         \entryrow{President}{Opening Speech}{\president}{1--2 min}{2:0}
         \entryrow{Toastmaster}{Welcome Speech}{\tm[name]} {2--3 min}{3:0}
@@ -393,6 +475,9 @@ our club, please contact VPM chen.huang@ericsson.com Huang Chen.
         \entryrow{SAA}{Announce Best \& Photo Time}{\saa}{1 min}{1:0}
         \entryrow{President}{Closing Speech}{\president}{1--2 min}{2:0}
     }%
-}\hfil}
+%}%\hfil}
 
-\bye
+
+\supereject\end
+
+
