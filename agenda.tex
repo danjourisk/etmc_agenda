@@ -28,20 +28,20 @@
 
 %% Meeting Officers
 \def\president{Charles Li}
-\def\saa{Xian He}
+\def\saa{Xuefeng Wang}
 
 %% Meeting Roles
-\def\tmname{Lei Wang}\def\tmproject{CL4}
-\def\gename{Arvind Duray}\def\geproject{CL2}
-\def\timername{Hua Liu}\def\timerproject{CL4}
-\def\gramname{Teela Zhao}\def\gramproject{CL1}
-\def\ahname{Liyu Huang}\def\ahproject{CL1}
-\def\ttmname{Melanie Wang}\def\ttmproject{CL4}
-\def\ttename{Tao Zhang}\def\tteproject{CL8}
+\def\tmname{Liyu Huang}\def\tmproject{CL5}
+\def\gename{Jie Zhang}\def\geproject{CL8}
+\def\timername{Xiao Qin}\def\timerproject{CL4}
+\def\gramname{Amy Wang}\def\gramproject{CL3}
+\def\ahname{Fangfang Liu}\def\ahproject{CL1}
+\def\ttmname{Rose Zheng}\def\ttmproject{CL4}
+\def\ttename{Melanie Wang}\def\tteproject{CL3}
+\def\firstspeakername{Yanping Dang}\def\firstspeakerproject{CC6}\def\firstspeakertitle{Reason}
+\def\secondspeakername{Huan Liu}\def\secondspeakerproject{CC4}\def\secondspeakertitle{Yoga and me}
 \def\firstevaluatorname{Xiao Qin}\def\firstevaluatorproject{CL1}
-\def\secondevaluatorname{Xian He}\def\secondevaluatorproject{CL4}
-\def\firstspeakername{Charles Li}\def\firstspeakerproject{ACS3}\def\firstspeakertitle{Reason}
-\def\secondspeakername{Xiao Qin}\def\secondspeakerproject{CC1}\def\secondspeakertitle{Yoga and me}
+\def\secondevaluatorname{Xuefeng Wang}\def\secondevaluatorproject{CL1}
 
 %% Meeting theme
 \def\themeinfo{Movie}
@@ -144,6 +144,7 @@
 \font\titlefont = cmbx12 scaled \magstep3
 \font\smalltitlefont = cmbx12 scaled \magstep2
 \font\subtitlefont = cmbx10 scaled \magstephalf
+\font\subsubtitlefont = cmbx10 scaled \magstephalf
 \font\tabletitlefont = cmbx9
 \font\tablebodyfont = cmr9
 
@@ -197,7 +198,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\ttime#1#2 {% named to avoid key word time
 \smallskip
-\line{\hbox to .7in{\quad Time\hfil}#1\quad#2\hfil}%
+\line{\hbox to .7in{\quad Time\hfil}\bf#1\quad#2\hfil}%
 \smallskip
 }
 
@@ -207,7 +208,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\venue#1 {%
 \smallskip
-\line{\hbox to .7in{\quad Venue\hfil}#1\hfil}%
+\line{\hbox to .7in{\quad Venue\hfil}\bf#1\hfil}%
 \smallskip
 }
 
@@ -262,8 +263,8 @@
         {\hbox to \hsize{\white\titlefont\vphantom{pg}vote for the best!\hfil}}}%
 \vskip .1\vsize
 
-\centerline{\epsfxsize = 2in \epsfbox{tmlogo.eps}}
-\vskip .05\vsize
+\centerline{\epsfxsize = 2in \epsfbox{vote.eps}}
+\vskip .01\vsize
 \centerline{Scan and vote}
 \centerline{\dateinfo}
 \vskip .1\vsize
@@ -299,8 +300,8 @@
 
 \vskip .08\vsize
 
-\noindent\centerline{\hbox{\vtop{\hbox{\epsfxsize = 1.5in \epsfbox{tmlogo.eps}}
-                                 \vskip .05\hsize
+\noindent\centerline{\hbox{\vtop{\hbox{\epsfxsize = 1.5in \epsfbox{wechat.eps}}
+                                 \vskip .03\hsize
                                  \hbox to 1.5in{\hfil ETMC Wechat\hfil}}%
                            \hskip .1\hsize
                            \vbox{\vskip\baselineskip\hbox{\subtitlefont $\surd$ Listening Skill}%
@@ -311,7 +312,7 @@
 
 
 \vskip .1\vsize
-\centerline{\subtitlefont A fantastic journey is about to begin...}
+\centerline{\subsubtitlefont A fantastic journey is about to begin...}
 
 
 \vfill
