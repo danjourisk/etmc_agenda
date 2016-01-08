@@ -15,11 +15,8 @@
 \medskipamount 6pt plus 20pt
 \smallskipamount 3pt plus 10pt 
 
-\newdimen\boxmargin
-\boxmargin = 2pt
-
-\newdimen\boxwidth 
-\boxwidth = \hsize
+\newdimen\boxmargin \boxmargin = 2pt
+\newdimen\boxwidth \boxwidth = \hsize
 \global\advance\boxwidth by 2\boxmargin
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -38,17 +35,17 @@
 \def\ahname{Fangfang Liu}\def\ahproject{CL1}
 \def\ttmname{Rose Zheng}\def\ttmproject{CL4}
 \def\ttename{Melanie Wang}\def\tteproject{CL3}
-\def\firstspeakername{Yanping Dang}\def\firstspeakerproject{CC6}\def\firstspeakertitle{Reason}
+\def\firstspeakername{Yanping Dang}\def\firstspeakerproject{CC6}\def\firstspeakertitle{Really Long Long Title of a Speech in Toastmasters Conference but agenda tex programe and handle it wonderfully}
 \def\secondspeakername{Huan Liu}\def\secondspeakerproject{CC4}\def\secondspeakertitle{Yoga and me}
 \def\firstevaluatorname{Xiao Qin}\def\firstevaluatorproject{CL1}
 \def\secondevaluatorname{Xuefeng Wang}\def\secondevaluatorproject{CL1}
 
 %% Meeting theme
-\def\themeinfo{Movie}
+\def\themeinfo{Every One Could be a Leader}
 
 %% Meeting time
-\def\dateinfo{2015 Oct 30th}
-\def\timeinfo{12:05 --13:30}
+\def\dateinfo{Jan 8th, 2016}
+\def\timeinfo{12:05--13:30}
 
 %% Meeting venue
 \def\venueinfo{Conf CN BJ WJ 1F (14) Mexico City, Ericsson Tower 1F}
@@ -113,7 +110,7 @@
 \def\showtime{\ifnum\hour<10 0\number\hour\else\number\hour\fi
                 :\ifnum\min<10 0\number\min\else\number\min\fi}
 
-%#1 min, #2 sec
+% parameter : #1 min, #2 sec
 \def\gotime#1:#2 { %
     \tmphour = \hour %
     \tmpmin = \min %
@@ -142,8 +139,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \font\supertitlefont = cmbx12 scaled \magstep4
 \font\titlefont = cmbx12 scaled \magstep3
-\font\smalltitlefont = cmbx12 scaled \magstep2
-\font\subtitlefont = cmbx10 scaled \magstephalf
+\font\subtitlefont = cmbx10 scaled \magstep3
 \font\subsubtitlefont = cmbx10 scaled \magstephalf
 \font\tabletitlefont = cmbx9
 \font\tablebodyfont = cmr9
@@ -180,7 +176,7 @@
                     linewidth=0pt,%
                     fillcolor=#1,%
                     linecolor=#1]
-        {\hbox to \hsize{\white\subtitlefont\vphantom{pg}#2\hfil}}}%
+        {\hbox to \hsize{\white\subsubtitlefont\vphantom{pg}#2\hfil}}}%
 \medskip
 }
 
@@ -189,7 +185,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\theme#1 {%
 \medskip
-\line{\smalltitlefont \hfil Today's Theme\thinspace:\thinspace#1\hfil}%        
+%\line{\titlefont \hfil Today's Theme\thinspace:\thinspace#1\hfil}%        
+\line{\titlefont \hfil Theme\thinspace:\thinspace#1\hfil}%        
 \medskip
 }
 
@@ -198,7 +195,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\ttime#1#2 {% named to avoid key word time
 \smallskip
-\line{\hbox to .7in{\quad Time\hfil}\bf#1\quad#2\hfil}%
+\line{\hbox to .7in{\quad\bf Time\hfil}\bf#1\quad#2\hfil}%
 \smallskip
 }
 
@@ -208,7 +205,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \def\venue#1 {%
 \smallskip
-\line{\hbox to .7in{\quad Venue\hfil}\bf#1\hfil}%
+\line{\hbox to .7in{\quad\bf Venue\hfil}\bf#1\hfil}%
 \smallskip
 }
 
@@ -268,10 +265,10 @@
 \centerline{Scan and vote}
 \centerline{\dateinfo}
 \vskip .1\vsize
-\centerline{\vbox{\vskip\baselineskip\hbox{\subtitlefont Best Speaker\hfil}%
-                  \vskip\baselineskip\hbox{\subtitlefont Best Table Topic Speaker\hfil}%
-                  \vskip\baselineskip\hbox{\subtitlefont Best Role\hfil}%
-                  \vskip\baselineskip\hbox{\subtitlefont Best Evaluator\hfil}}}
+\centerline{\vbox{\vskip\baselineskip\hbox{\subsubtitlefont Best Speaker\hfil}%
+                  \vskip\baselineskip\hbox{\subsubtitlefont Best Table Topic Speaker\hfil}%
+                  \vskip\baselineskip\hbox{\subsubtitlefont Best Role\hfil}%
+                  \vskip\baselineskip\hbox{\subsubtitlefont Best Evaluator\hfil}}}
 
 
 \vfill
@@ -282,7 +279,7 @@
 \leftline{\epsfxsize = .6in \epsfbox{tmlogo.eps}}
 \vskip .02\vsize
 
-\vskip \baselineskip\centerline{\subtitlefont Welcome to}
+\vskip \baselineskip\centerline{\subsubtitlefont Welcome to}
 \vskip \baselineskip\centerline{\supertitlefont ERICSSON}
 \vskip \baselineskip\centerline{\supertitlefont TOASTMASTERS CLUB}
 
@@ -304,15 +301,15 @@
                                  \vskip .03\hsize
                                  \hbox to 1.5in{\hfil ETMC Wechat\hfil}}%
                            \hskip .1\hsize
-                           \vbox{\vskip\baselineskip\hbox{\subtitlefont $\surd$ Listening Skill}%
-                                 \vskip\baselineskip\hbox{\subtitlefont $\surd$ Communication Skill}%
-                                 \vskip\baselineskip\hbox{\subtitlefont $\surd$ Public Speaking Chance}%
-                                 \vskip\baselineskip\hbox{\subtitlefont $\surd$ Leadership Skill}%
+                           \vbox{\vskip\baselineskip\hbox{\subsubtitlefont $\surd$ Listening Skill}%
+                                 \vskip\baselineskip\hbox{\subsubtitlefont $\surd$ Communication Skill}%
+                                 \vskip\baselineskip\hbox{\subsubtitlefont $\surd$ Public Speaking Chance}%
+                                 \vskip\baselineskip\hbox{\subsubtitlefont $\surd$ Leadership Skill}%
                                  \vfill}}}%
 
 
 \vskip .1\vsize
-\centerline{\subsubtitlefont A fantastic journey is about to begin...}
+\centerline{\subtitlefont A fantastic journey is about to begin...}
 
 
 \vfill
@@ -330,7 +327,7 @@ leadership skill development. Each week Toastmasters helps
 more than a quarter million men and women of every ethnicity, 
 education level and profession build their competence in 
 communication so they can gain the confidence to lead others. 
-(For more information, please visit www.toastmasters.org)
+(For more information, please visit \underbar{\blue http://www.toastmasters.org})
 
 \subtitle[skyblue]{About Ericsson Toastmasters Club}
 
@@ -340,7 +337,7 @@ and happy. We make people laugh by the use of language.
 We help you become strong by serving and leading your team. 
 Our mission is: Motivate to develop all members' potential. 
 Support each other, grow together! If you are interested in 
-our club, please contact VPM chen.huang@ericsson.com Huang Chen.
+our club, please contact VPM via \underbar{{\blue huan.liu@ericsson.com}}.
 
 {\offinterlineskip
 \medskip
@@ -426,7 +423,8 @@ our club, please contact VPM chen.huang@ericsson.com Huang Chen.
     \coloralign{%
          \hbox to .10\hsize{\strut\hfil#\hfil}%  % Time
         &\hbox to .25\hsize{\ #\hfil}%           % Role
-        &\hbox to .35\hsize{\ #\hfil}%          % Conference Session
+%        &\hbox to .35\hsize{\ #\hfil}%           % Conference Session
+        &\hbox to .35\hsize{\vtop{\noindent\overfullrule 0pt\hsize .35\hsize#}}%           % Role
         &\hbox to .16\hsize{\ #\hfil}%           % Member
         &\hbox to .13\hsize{\ \hfil#\hfil}\cr
 %        \noalign{\hrule}
@@ -436,7 +434,7 @@ our club, please contact VPM chen.huang@ericsson.com Huang Chen.
         \CC\bamboogreen&\bamboogreen&\bamboogreen&\bamboogreen&\bamboogreen\cr
              \noalign{\strut\hfil Welcoming Session \hfil}\noalign{\hrule}%
         \ECC%}
-        \entryrow{}{Arrival Time}{All}{5 min}{5:0}
+        \entryrow{}{Arrival Time}{}{5 min}{5:0}
         \entryrow{President}{Opening Speech}{\president}{1--2 min}{2:0}
         \entryrow{Toastmaster}{Welcome Speech}{\tm[name]} {2--3 min}{3:0}
         \entryrow{Toastmaster}{Greeting Guests}{\tm[name]} {1--2 min}{2:0}
@@ -449,21 +447,21 @@ our club, please contact VPM chen.huang@ericsson.com Huang Chen.
         \sessionrow{Table Topic \& Sharing Session}
         \entryrow{Toastmaster}{Introduce Table Topic Master}{\tm[name]}{0--30 sec}{0:30}
         \entryrow{Table Topic Master}{Conduct Table Topic Session}{\ttm[name]}{15 min}{15:0}
-        \entryrow{Toastmaster}{Introduce Table Topic Evaluator}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Toastmaster}{Introduce Table Topic Evaluator}{\tte[name]}{0--30 sec}{0:30}
         \entryrow{Table Topic Evaluator}{Evaluate Table Topic Session}{\tm[name]}{4--6 min}{6:0}
         \entryrow{Toastmaster}{New Free Talk Session}{\tm[name]}{4--5 min}{5:0}
 %
         \sessionrow{Speech \& Evaluation Session}
         \entryrow{Toastmaster}{Introduce Prepared Speaker 1}{\tm[name]}{0--30 sec}{0:30}
         \entryrow{Prepared Speaker 1}{\fstspk[project]--\fstspk[title]}{\fstspk[name]}{5--7 min}{7:0}
-        \entryrow{}{Make Comment to Speaker 1}{All}{1 min}{1:0}
+        \entryrow{}{Make Comments on Speaker 1}{}{1 min}{1:0}
         \entryrow{Toastmaster}{Introduce Prepared Speaker 2}{\tm[name]}{0--30 sec}{0:30}
         \entryrow{Prepared Speaker 2}{\scdspk[project]--\scdspk[title]}{\scdspk[name]}{5--7 min}{7:0}
-        \entryrow{}{Make Comment to Speaker 1}{All}{1 min}{1:0}
+        \entryrow{}{Make Comments on Speaker 2}{}{1 min}{1:0}
         \entryrow{Toastmaster}{Introduce Speech Evaluator 1}{\tm[name]}{0--30 sec}{0:30}
-        \entryrow{Evaluator 1}{Evaluate Speaker 1}{\tm[name]}{2--3 min}{3:0}
+        \entryrow{Evaluator 1}{Evaluate Speaker 1}{\fstevl[name]}{2--3 min}{3:0}
         \entryrow{Toastmaster}{Introduce Speech Evaluator 2}{\tm[name]}{0--30 sec}{0:30}
-        \entryrow{Evaluator 2}{Evaluate Speaker 2}{\tm[name]}{2--3 min}{3:0}
+        \entryrow{Evaluator 2}{Evaluate Speaker 2}{\scdevl[name]}{2--3 min}{3:0}
 %
         \sessionrow{Report Session}
         \entryrow{Toastmaster}{Call Up Report}{\tm[name]}{0--30 sec}{0:30}
@@ -473,7 +471,7 @@ our club, please contact VPM chen.huang@ericsson.com Huang Chen.
         \entryrow{Toastmaster}{Call General Evaluator}{\tm[name]}{0--30 sec}{0:30}
         \entryrow{General Evaluator}{Evaluate Meeting}{\ge[name]}{4--5 min}{5:0}
         \entryrow{}{Silence for Voting Best}{}{1 min}{1:0}
-        \entryrow{SAA}{Announce Best \& Photo Time}{\saa}{1 min}{1:0}
+        \entryrow{Sergeant at Arms}{Announce Best \& Photo Time}{\saa}{1 min}{1:0}
         \entryrow{President}{Closing Speech}{\president}{1--2 min}{2:0}
     }%
 %}%\hfil}
