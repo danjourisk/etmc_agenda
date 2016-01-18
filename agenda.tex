@@ -43,9 +43,9 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 %% theme,timenote and venue
-\def\themeinfo{Every One Could be a Leader}
-\def\dateinfo{Jan 8th, 2016}
-\def\timeinfo{12:05--13:30}
+\def\themeinfo{Plan Your Prosperity}
+\def\dateinfo{Jan 15th, 2016}
+\def\timeinfo{12:05--13:35}
 \def\venueinfo{Conf CN BJ WJ 1F (14) Mexico City, Ericsson Tower 1F}
 
 %% club officer 
@@ -53,31 +53,31 @@
 \def\saa{Xuefeng Wang}
 
 %% vpm email address
+\def\vpm{Huan Liu}
 \def\vpmemail{huan.liu@ericsson.com}
 
 %% function role
-\def\tmname{Liyu Huang}       \def\tmproject{CL5}        % Toastmaster   
-\def\gename{Jie Zhang}        \def\geproject{CL8}        % General Evaluator
-\def\timername{Xiao Qin}      \def\timerproject{CL4}     % Timer
-\def\gramname{Amy Wang}       \def\gramproject{CL3}      % Grammarian
-\def\ahname{Fangfang Liu}     \def\ahproject{CL1}        % Ah Counter
-\def\ttmname{Rose Zheng}      \def\ttmproject{CL4}       % Table Topic Master
-\def\ttename{Melanie Wang}    \def\tteproject{CL3}       % Table Topic Evaluator
-\def\evaonename{Xiao Qin}     \def\evaoneproject{CL1}    % Speech Evaluator 1
-\def\evatwoname{Xuefeng Wang} \def\evatwoproject{CL1}    % Speech Evaluator 2
+\def\tmname{Lei Wang}         \def\tmproject{CL10}        % Toastmaster   
+\def\gename{Melanie Wang}     \def\geproject{CL3}        % General Evaluator
+\def\timername{Liyu Huang}    \def\timerproject{CL4}     % Timer
+\def\gramname{Fangfang Liu}   \def\gramproject{CL1}      % Grammarian
+\def\ahname{Xuefeng Wang}     \def\ahproject{CL1}        % Ah Counter
+\def\ttmname{Amy Wang}        \def\ttmproject{CL8}       % Table Topic Master
+\def\ttename{Bingfeng Liu}    \def\tteproject{CL2}       % Table Topic Evaluator
+\def\evaonename{Xian He}      \def\evaoneproject{CL1}    % Speech Evaluator 1
+\def\evatwoname{Huan Liu}     \def\evatwoproject{CL3}    % Speech Evaluator 2
 
 %% speaker role
-\def\spkonename{Yanping Dang}   % Speaker One
-\def\spkoneproject{CC6}
-\def\spkonetitle{Really Long Title of a Speech that is to be delivered
-                 but you can not imagine how long it would be}  
-\def\spkoneduration{6--8 min}  
-\def\spkonetime{08:00}          % {min:sec}, e.g. 8min30sec type {08:30}  
-\def\spktwoname{Huan Liu}       % Speaker Two
+\def\spkonename{Yuki Wang}   % Speaker One
+\def\spkoneproject{CC8}
+\def\spkonetitle{New Year in Japan}
+\def\spkoneduration{5--7 min}  
+\def\spkonetime{07:00}          % {min:sec}, e.g. 8min30sec type {08:30}  
+\def\spktwoname{Yongming Sun}       % Speaker Two
 \def\spktwoproject{CC4}
-\def\spktwotitle{Yoga and me}
-\def\spktwoduration{4--6 min}  
-\def\spktwotime{06:00}          % {min:sec}, e.g. 8min30sec type {08:30}  
+\def\spktwotitle{The Drive Mode}
+\def\spktwoduration{5--7 min}  
+\def\spktwotime{07:00}          % {min:sec}, e.g. 8min30sec type {08:30}  
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% SECTION 2 : ENVIRONMENTAL MACRO
@@ -90,11 +90,12 @@
 \input colortab    % colortab package for background color support in table
 
 %% page layout set
-\special{papersize=11.692in,8.267in}
+%\special{papersize=11.692in,8.267in}
+\special{papersize=297mm,210mm}
 \nopagenumbers
 \hsize 5.4in
 \vsize 7.3in
-\hoffset -0.70in
+\hoffset -0.621in
 \voffset -0.5in
 
 %% agenda parameters set
@@ -122,34 +123,47 @@
 
 %%%%%%%%%%%%%%%%%%%%% user data encapulation macro %%%%%%%%%%%%%%%%%%%
 
-\def\ifstringeq#1#2{\def\stra{#1}\def\strb{#2}\ifx\stra\strb}
+\def\ifstringeq#1#2{\edef\stra{#1}\edef\strb{#2}\ifx\stra\strb}
+
+\def\pjtname[#1]{
+    \ifstringeq{#1}{CL1}CL1--Listening\fi
+    \ifstringeq{#1}{CL2}CL2--Critical Thinking\fi
+    \ifstringeq{#1}{CL3}CL3--Giving Feedback\fi
+    \ifstringeq{#1}{CL4}CL4--Time Management\fi
+    \ifstringeq{#1}{CL5}CL5--Planning\&Implementation\fi
+    \ifstringeq{#1}{CL6}CL6--Organizing\&Delegating\fi
+    \ifstringeq{#1}{CL7}CL7--Facilitation\fi
+    \ifstringeq{#1}{CL8}CL8--Motivating People\fi
+    \ifstringeq{#1}{CL9}CL9--Mentoring\fi
+    \ifstringeq{#1}{CL10}CL10--Team Building\fi}
+
 
 \def\tm[#1]{%
-    \ifstringeq{#1}{project}\tmproject\fi
+    \ifstringeq{#1}{project}\pjtname[\tmproject]\fi
     \ifstringeq{#1}{name}\tmname\fi} 
 \def\ge[#1]{%
-    \ifstringeq{#1}{project}\geproject\fi
+    \ifstringeq{#1}{project}\pjtname[\geproject]\fi
     \ifstringeq{#1}{name}\gename\fi} 
 \def\timer[#1]{%
-    \ifstringeq{#1}{project}\timerproject\fi
+    \ifstringeq{#1}{project}\pjtname[\timerproject]\fi
     \ifstringeq{#1}{name}\timername\fi} 
 \def\gram[#1]{%
-    \ifstringeq{#1}{project}\gramproject\fi
+    \ifstringeq{#1}{project}\pjtname[\gramproject]\fi
     \ifstringeq{#1}{name}\gramname\fi} 
 \def\ah[#1]{%
-    \ifstringeq{#1}{project}\ahproject\fi
+    \ifstringeq{#1}{project}\pjtname[\ahproject]\fi
     \ifstringeq{#1}{name}\ahname\fi} 
 \def\ttm[#1]{%
-    \ifstringeq{#1}{project}\ttmproject\fi
+    \ifstringeq{#1}{project}\pjtname[\ttmproject]\fi
     \ifstringeq{#1}{name}\ttmname\fi} 
 \def\tte[#1]{%
-    \ifstringeq{#1}{project}\tteproject\fi
+    \ifstringeq{#1}{project}\pjtname[\tteproject]\fi
     \ifstringeq{#1}{name}\ttename\fi} 
 \def\fstevl[#1]{%
-    \ifstringeq{#1}{project}\evaoneproject\fi
+    \ifstringeq{#1}{project}\pjtname[\evaoneproject]\fi
     \ifstringeq{#1}{name}\evaonename\fi} 
 \def\scdevl[#1]{%
-    \ifstringeq{#1}{project}\evatwoproject\fi
+    \ifstringeq{#1}{project}\pjtname[\evatwoproject]\fi
     \ifstringeq{#1}{name}\evatwoname\fi} 
 \def\fstspk[#1]{%
     \ifstringeq{#1}{project}\spkoneproject\fi
@@ -367,7 +381,7 @@ leadership skill development. Each week Toastmasters helps
 more than a quarter million men and women of every ethnicity, 
 education level and profession build their competence in 
 communication so they can gain the confidence to lead others. 
-(For more information, please visit \underbar{\blue http://www.toastmasters.org})
+(For more information, please visit {\blue \underbar{http://www.toastmasters.org}})
 
 \subtitle[skyblue]{About Ericsson Toastmasters Club}
 
@@ -377,7 +391,7 @@ and happy. We make people laugh by the use of language.
 We help you become strong by serving and leading your team. 
 Our mission is: Motivate to develop all members' potential. 
 Support each other, grow together! If you are interested in 
-our club, please contact VPM via \underbar{{\blue \vpmemail}}.
+our club, please contact VPM via {\blue\underbar{ \vpmemail}}.
 
 {\offinterlineskip
 \medskip
@@ -408,8 +422,8 @@ our club, please contact VPM via \underbar{{\blue \vpmemail}}.
                \noalign{\hrule}% 
                \vphantom{\vrule height 2pt}&&\cr}
 \halign{%
-    \vrule\hbox to 0.4\hsize{\quad#\quad\hfil}%
-        &\vrule\hbox to 0.25\hsize{\hfil\quad#\quad\hfil}%
+    \vrule\hbox to 0.3\hsize{\quad#\quad\hfil}%
+        &\vrule\hbox to 0.4\hsize{\quad#\quad\hfil}%
         &\vrule\hbox to 0.25\hsize{\quad#\quad\hfil}\vrule\cr
     \noalign{\hrule}
     \vphantom{\vrule height 2pt}&&\cr
@@ -480,8 +494,8 @@ our club, please contact VPM via \underbar{{\blue \vpmemail}}.
     \sessionrow{Table Topic \& Sharing Session}
     \entryrow{Toastmaster}{Introduce Table Topic Master}{\tm[name]}{0--30 sec}{0:30}
     \entryrow{Table Topic Master}{Conduct Table Topic Session}{\ttm[name]}{15 min}{15:0}
-    \entryrow{Toastmaster}{Introduce Table Topic Evaluator}{\tte[name]}{0--30 sec}{0:30}
-    \entryrow{Table Topic Evaluator}{Evaluate Table Topic Session}{\tm[name]}{4--6 min}{6:0}
+    \entryrow{Toastmaster}{Introduce Table Topic Evaluator}{\tm[name]}{0--30 sec}{0:30}
+    \entryrow{Table Topic Evaluator}{Evaluate Table Topic Session}{\ttm[name]}{4--6 min}{6:0}
     \entryrow{Toastmaster}{New Free Talk Session}{\tm[name]}{4--5 min}{5:0}
 %
     \sessionrow{Speech \& Evaluation Session}
