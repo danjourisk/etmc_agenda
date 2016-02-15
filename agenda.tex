@@ -57,27 +57,77 @@
 \def\vpmemail{huan.liu@ericsson.com}
 
 %% function role
-\def\tmname{Lei Wang}         \def\tmproject{CL10}        % Toastmaster   
+\def\tmname{Lei Wang}         \def\tmproject{CL10}       % Toastmaster   
 \def\gename{Melanie Wang}     \def\geproject{CL3}        % General Evaluator
 \def\timername{Liyu Huang}    \def\timerproject{CL4}     % Timer
 \def\gramname{Fangfang Liu}   \def\gramproject{CL1}      % Grammarian
 \def\ahname{Xuefeng Wang}     \def\ahproject{CL1}        % Ah Counter
 \def\ttmname{Amy Wang}        \def\ttmproject{CL8}       % Table Topic Master
 \def\ttename{Bingfeng Liu}    \def\tteproject{CL2}       % Table Topic Evaluator
+
+% Evaluator Role
+
 \def\evaonename{Xian He}      \def\evaoneproject{CL1}    % Speech Evaluator 1
 \def\evatwoname{Huan Liu}     \def\evatwoproject{CL3}    % Speech Evaluator 2
+\def\evathreename{Huan Liu}   \def\evathreeproject{CL5}  % Speech Evaluator 3
+\def\evafourname{Huan Liu}    \def\evafourproject{CL3}   % Speech Evaluator 4
+\def\evafivename{Huan Liu}    \def\evafiveproject{CL5}   % Speech Evaluator 5
 
 %% speaker role
-\def\spkonename{Yuki Wang}   % Speaker One
+
+% Speaker One
+\def\spkonename{Yuki Wang}      
 \def\spkoneproject{CC8}
 \def\spkonetitle{New Year in Japan}
 \def\spkoneduration{5--7 min}  
 \def\spkonetime{07:00}          % {min:sec}, e.g. 8min30sec type {08:30}  
-\def\spktwoname{Yongming Sun}       % Speaker Two
+
+% Speaker Two
+\def\spktwoname{Yongming Sun}   
 \def\spktwoproject{CC4}
 \def\spktwotitle{The Drive Mode}
 \def\spktwoduration{5--7 min}  
 \def\spktwotime{07:00}          % {min:sec}, e.g. 8min30sec type {08:30}  
+
+% Speaker Three
+\def\spkthreename{Yongming Sun} 
+\def\spkthreeproject{CC4}
+\def\spkthreetitle{The Drive Mode}
+\def\spkthreeduration{5--7 min}  
+\def\spkthreetime{07:00}        % {min:sec}, e.g. 8min30sec type {08:30}  
+
+% Speaker Four
+\def\spkfourname{Yongming Sun}       
+\def\spkfourproject{CC4}
+\def\spkfourtitle{The Drive Mode}
+\def\spkfourduration{5--7 min}  
+\def\spkfourtime{07:00}        % {min:sec}, e.g. 8min30sec type {08:30}  
+
+% Speaker Five
+\def\spkfivename{Yongming Sun}       
+\def\spkfiveproject{CC4}
+\def\spkfivetitle{The Drive Mode}
+\def\spkfiveduration{5--7 min}  
+\def\spkfivetime{07:00}        % {min:sec}, e.g. 8min30sec type {08:30}  
+
+
+% session select
+
+\global\newcount\openfreetalk
+\global\newcount\openspkthree 
+\global\newcount\openspkfour
+\global\newcount\openspkfive
+\global\newcount\openmarathon
+
+
+\openmarathon    = 0
+
+\openfreetalk    = 0
+\openspkthree    = 1
+\openspkfour     = 0
+\openspkfive     = 0
+
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% SECTION 2 : ENVIRONMENTAL MACRO
@@ -123,6 +173,7 @@
 
 %%%%%%%%%%%%%%%%%%%%% user data encapulation macro %%%%%%%%%%%%%%%%%%%
 
+
 \def\ifstringeq#1#2{\edef\stra{#1}\edef\strb{#2}\ifx\stra\strb}
 
 \def\pjtname[#1]{
@@ -159,24 +210,53 @@
 \def\tte[#1]{%
     \ifstringeq{#1}{project}\pjtname[\tteproject]\fi
     \ifstringeq{#1}{name}\ttename\fi} 
-\def\fstevl[#1]{%
+
+\def\evlone[#1]{%
     \ifstringeq{#1}{project}\pjtname[\evaoneproject]\fi
     \ifstringeq{#1}{name}\evaonename\fi} 
-\def\scdevl[#1]{%
+\def\evltwo[#1]{%
     \ifstringeq{#1}{project}\pjtname[\evatwoproject]\fi
     \ifstringeq{#1}{name}\evatwoname\fi} 
-\def\fstspk[#1]{%
+\def\evlthree[#1]{%
+    \ifstringeq{#1}{project}\pjtname[\evathreeproject]\fi
+    \ifstringeq{#1}{name}\evathreename\fi} 
+\def\evlfour[#1]{%
+    \ifstringeq{#1}{project}\pjtname[\evafourproject]\fi
+    \ifstringeq{#1}{name}\evafourname\fi} 
+\def\evlfive[#1]{%
+    \ifstringeq{#1}{project}\pjtname[\evafiveproject]\fi
+    \ifstringeq{#1}{name}\evafivename\fi} 
+
+\def\spkone[#1]{%
     \ifstringeq{#1}{project}\spkoneproject\fi
     \ifstringeq{#1}{name}\spkonename\fi
     \ifstringeq{#1}{title}\spkonetitle\fi
     \ifstringeq{#1}{time}\spkonetime\fi 
     \ifstringeq{#1}{duration}\spkoneduration\fi} 
-\def\scdspk[#1]{%
+\def\spktwo[#1]{%
     \ifstringeq{#1}{project}\spktwoproject\fi
     \ifstringeq{#1}{name}\spktwoname\fi
     \ifstringeq{#1}{title}\spktwotitle\fi
     \ifstringeq{#1}{time}\spktwotime\fi
     \ifstringeq{#1}{duration}\spktwoduration\fi} 
+\def\spkthree[#1]{%
+    \ifstringeq{#1}{project}\spkthreeproject\fi
+    \ifstringeq{#1}{name}\spkthreename\fi
+    \ifstringeq{#1}{title}\spkthreetitle\fi
+    \ifstringeq{#1}{time}\spkthreetime\fi
+    \ifstringeq{#1}{duration}\spkthreeduration\fi} 
+\def\spkfour[#1]{%
+    \ifstringeq{#1}{project}\spkfourproject\fi
+    \ifstringeq{#1}{name}\spkfourname\fi
+    \ifstringeq{#1}{title}\spkfourtitle\fi
+    \ifstringeq{#1}{time}\spkfourtime\fi
+    \ifstringeq{#1}{duration}\spkfourduration\fi} 
+\def\spkfive[#1]{%
+    \ifstringeq{#1}{project}\spkfiveproject\fi
+    \ifstringeq{#1}{name}\spkfivename\fi
+    \ifstringeq{#1}{title}\spkfivetitle\fi
+    \ifstringeq{#1}{time}\spkfivetime\fi
+    \ifstringeq{#1}{duration}\spkfiveduration\fi} 
 
 %%%%%%%%%%%%%%%%%%%%% time advance processing macro %%%%%%%%%%%%%%%%%%%%
 
@@ -415,6 +495,8 @@ our club, please contact VPM via {\blue\underbar{ \vpmemail}}.
 \noindent CL project is a practical guide to becoming a better leader.
 \medskip
 
+
+\ifnum\openmarathon = 0
 \hbox to \hsize{\hfil\vbox{
 {\tabskip = 0pt
 \offinterlineskip
@@ -422,12 +504,12 @@ our club, please contact VPM via {\blue\underbar{ \vpmemail}}.
                \noalign{\hrule}% 
                \vphantom{\vrule height 2pt}&&\cr}
 \halign{%
-    \vrule\hbox to 0.3\hsize{\quad#\quad\hfil}%
-        &\vrule\hbox to 0.4\hsize{\quad#\quad\hfil}%
-        &\vrule\hbox to 0.25\hsize{\quad#\quad\hfil}\vrule\cr
+    \vrule\hbox to 0.3\hsize{\quad#\hfil}%
+        &\vrule\hbox to 0.4\hsize{\quad#\hfil}%
+        &\vrule\hbox to 0.25\hsize{\quad#\hfil}\vrule\cr
     \noalign{\hrule}
     \vphantom{\vrule height 2pt}&&\cr
-    \bf Role&\bf CL Project&\bf Owner\cr
+    \bf Role&\bf \ CL Project&\bf Owner\cr
     \hruleskip
     Toastmaster&\tm[project]&\tm[name]\cr
     \hruleskip
@@ -443,13 +525,64 @@ our club, please contact VPM via {\blue\underbar{ \vpmemail}}.
     \hruleskip
     Table Topic Evaluator&\tte[project]&\tte[name]\cr
     \hruleskip
-    Evaluator 1&\fstevl[project]&\fstevl[name]\cr
+    Evaluator 1&\evlone[project]&\evlone[name]\cr
     \hruleskip
-    Evaluator 2&\scdevl[project]&\scdevl[name]\cr
+    Evaluator 2&\evltwo[project]&\evltwo[name]\cr
+    \ifnum\openspkthree = 1
+    \hruleskip
+    Evaluator 3&\evlthree[project]&\evlthree[name]\cr
+    \fi
+    \ifnum\openspkfour = 1
+    \hruleskip
+    Evaluator 4&\evlfour[project]&\evlfour[name]\cr
+    \fi
+    \ifnum\openspkfive = 1
+    \hruleskip
+    Evaluator 5&\evlfive[project]&\evlfive[name]\cr
+    \fi
     \vphantom{\vrule height 2pt}&&\cr
     \noalign{\hrule}
    } 
-}}\hfil}
+}}\hfil}%
+\else
+\hbox to \hsize{\hfil\vbox{
+{\tabskip = 0pt
+\offinterlineskip
+\def\hruleskip{\vphantom{\vrule height 2pt}&&\cr%
+               \noalign{\hrule}% 
+               \vphantom{\vrule height 2pt}&&\cr}
+\halign{%
+    \vrule\hbox to 0.3\hsize{\quad#\hfil}%
+        &\vrule\hbox to 0.4\hsize{\quad#\hfil}%
+        &\vrule\hbox to 0.25\hsize{\quad#\hfil}\vrule\cr
+    \noalign{\hrule}
+    \vphantom{\vrule height 2pt}&&\cr
+    \bf Role&\bf \ CL Project&\bf Owner\cr
+    \hruleskip
+    Toastmaster&\tm[project]&\tm[name]\cr
+    \hruleskip
+    Timer&\timer[project]&\timer[name]\cr
+    \hruleskip
+    Evaluator 1&\evlone[project]&\evlone[name]\cr
+    \hruleskip
+    Evaluator 2&\evltwo[project]&\evltwo[name]\cr
+    \ifnum\openspkthree = 1
+    \hruleskip
+    Evaluator 3&\evlthree[project]&\evlthree[name]\cr
+    \fi
+    \ifnum\openspkfour = 1
+    \hruleskip
+    Evaluator 4&\evlfour[project]&\evlfour[name]\cr
+    \fi
+    \ifnum\openspkfive = 1
+    \hruleskip
+    Evaluator 5&\evlfive[project]&\evlfive[name]\cr
+    \fi
+    \vphantom{\vrule height 2pt}&&\cr
+    \noalign{\hrule}
+   } 
+}}\hfil}%
+\fi
 \bigskip
 \break
 
@@ -471,7 +604,7 @@ our club, please contact VPM via {\blue\underbar{ \vpmemail}}.
 \def\entryrow#1#2#3#4#5{\noalign{\vskip 0pt plus 10pt}
                         \showtime&#1&#2&#3&#4\expandafter\advancetime#5 \cr
                         \noalign{\vskip 0pt plus 10pt\hrule}}%
-
+\ifnum\openmarathon = 0
 \coloralign{%
      \hbox to .10\hsize{\strut\hfil#\hfil}%  % Time
     &\hbox to .25\hsize{\ #\hfil}%           % Role
@@ -496,19 +629,49 @@ our club, please contact VPM via {\blue\underbar{ \vpmemail}}.
     \entryrow{Table Topic Master}{Conduct Table Topic Session}{\ttm[name]}{15 min}{15:0}
     \entryrow{Toastmaster}{Introduce Table Topic Evaluator}{\tm[name]}{0--30 sec}{0:30}
     \entryrow{Table Topic Evaluator}{Evaluate Table Topic Session}{\ttm[name]}{4--6 min}{6:0}
-    \entryrow{Toastmaster}{New Free Talk Session}{\tm[name]}{4--5 min}{5:0}
+%
+    \ifnum\openfreetalk = 1
+        \entryrow{Toastmaster}{New Free Talk Session}{\tm[name]}{4--5 min}{5:0}%
+    \fi
 %
     \sessionrow{Speech \& Evaluation Session}
     \entryrow{Toastmaster}{Introduce Prepared Speaker 1}{\tm[name]}{0--30 sec}{0:30}
-    \entryrow{Prepared Speaker 1}{\fstspk[project]--\fstspk[title]}{\fstspk[name]}{\fstspk[duration]}{\spkonetime}
+    \entryrow{Prepared Speaker 1}{\spkone[project]--\spkone[title]}{\spkone[name]}{\spkone[duration]}{\spkonetime}
     \entryrow{}{Make Comments on Speaker 1}{}{1 min}{1:0}
     \entryrow{Toastmaster}{Introduce Prepared Speaker 2}{\tm[name]}{0--30 sec}{0:30}
-    \entryrow{Prepared Speaker 2}{\scdspk[project]--\scdspk[title]}{\scdspk[name]}{\scdspk[duration]}{\spktwotime}
+    \entryrow{Prepared Speaker 2}{\spktwo[project]--\spktwo[title]}{\spktwo[name]}{\spktwo[duration]}{\spktwotime}
     \entryrow{}{Make Comments on Speaker 2}{}{1 min}{1:0}
+    \ifnum\openspkthree = 1
+        \entryrow{Toastmaster}{Introduce Prepared Speaker 3}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Prepared Speaker 3}{\spkthree[project]--\spkthree[title]}{\spkthree[name]}{\spkthree[duration]}{\spkthreetime}
+        \entryrow{}{Make Comments on Speaker 3}{}{1 min}{1:0}
+    \fi
+    \ifnum\openspkfour = 1
+        \entryrow{Toastmaster}{Introduce Prepared Speaker 4}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Prepared Speaker 4}{\spkfour[project]--\spkfour[title]}{\spkfour[name]}{\spkfour[duration]}{\spkfourtime}
+        \entryrow{}{Make Comments on Speaker 4}{}{1 min}{1:0}
+    \fi
+    \ifnum\openspkfive = 1
+        \entryrow{Toastmaster}{Introduce Prepared Speaker 5}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Prepared Speaker 5}{\spkfive[project]--\spkfive[title]}{\spkfive[name]}{\spkfive[duration]}{\spkfivetime}
+        \entryrow{}{Make Comments on Speaker 5}{}{1 min}{1:0}
+    \fi
     \entryrow{Toastmaster}{Introduce Speech Evaluator 1}{\tm[name]}{0--30 sec}{0:30}
-    \entryrow{Evaluator 1}{Evaluate Speaker 1}{\fstevl[name]}{2--3 min}{3:0}
+    \entryrow{Evaluator 1}{Evaluate Speaker 1}{\evlone[name]}{2--3 min}{3:0}
     \entryrow{Toastmaster}{Introduce Speech Evaluator 2}{\tm[name]}{0--30 sec}{0:30}
-    \entryrow{Evaluator 2}{Evaluate Speaker 2}{\scdevl[name]}{2--3 min}{3:0}
+    \entryrow{Evaluator 2}{Evaluate Speaker 2}{\evltwo[name]}{2--3 min}{3:0}
+    \ifnum\openspkthree = 1
+        \entryrow{Toastmaster}{Introduce Speech Evaluator 3}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Evaluator 3}{Evaluate Speaker 3}{\evlthree[name]}{2--3 min}{3:0}
+    \fi
+    \ifnum\openspkfour = 1
+        \entryrow{Toastmaster}{Introduce Speech Evaluator 4}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Evaluator 4}{Evaluate Speaker 4}{\evlfour[name]}{2--3 min}{3:0}
+    \fi
+    \ifnum\openspkfive = 1
+        \entryrow{Toastmaster}{Introduce Speech Evaluator 5}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Evaluator 5}{Evaluate Speaker 5}{\evlfive[name]}{2--3 min}{3:0}
+    \fi
 %
     \sessionrow{Report Session}
     \entryrow{Toastmaster}{Call Up Report}{\tm[name]}{0--30 sec}{0:30}
@@ -521,6 +684,72 @@ our club, please contact VPM via {\blue\underbar{ \vpmemail}}.
     \entryrow{Sergeant at Arms}{Announce Best \& Photo Time}{\saa}{1 min}{1:0}
     \entryrow{President}{Closing Speech}{\president}{1--2 min}{2:0}
 }%
+\else
+\coloralign{%
+     \hbox to .10\hsize{\strut\hfil#\hfil}%  % Time
+    &\hbox to .25\hsize{\ #\hfil}%           % Role
+    &\hbox to .35\hsize{\vtop{\noindent\overfullrule 0pt\hsize .35\hsize#}}%    Conference Session       
+    &\hbox to .16\hsize{\ #\hfil}%           % Member
+    &\hbox to .13\hsize{\ \hfil#\hfil}\cr
+    \titlerow{Time}{Role}{Conference Session}{Member}{Duration} 
+%
+    \sessionrow{Welcoming Session}
+    \entryrow{}{Arrival Time}{}{5 min}{5:0}
+    \entryrow{President}{Opening Speech}{\president}{1--2 min}{2:0}
+    \entryrow{Toastmaster}{Welcome Speech}{\tm[name]} {2--3 min}{3:0}
+    \entryrow{Toastmaster}{Greeting Guests}{\tm[name]} {1--2 min}{2:0}
+    \entryrow{Toastmaster}{Introduce Timer}{\tm[name]}{0--30 sec}{0:30}
+    \entryrow{Timer}{Explain the Role}{\timer[name]}{1--2 min}{2:0}
+%
+    \sessionrow{Speech \& Evaluation Session}
+    \entryrow{Toastmaster}{Introduce Prepared Speaker 1}{\tm[name]}{0--30 sec}{0:30}
+    \entryrow{Prepared Speaker 1}{\spkone[project]--\spkone[title]}{\spkone[name]}{\spkone[duration]}{\spkonetime}
+    \entryrow{}{Make Comments on Speaker 1}{}{1 min}{1:0}
+    \entryrow{Toastmaster}{Introduce Prepared Speaker 2}{\tm[name]}{0--30 sec}{0:30}
+    \entryrow{Prepared Speaker 2}{\spktwo[project]--\spktwo[title]}{\spktwo[name]}{\spktwo[duration]}{\spktwotime}
+    \entryrow{}{Make Comments on Speaker 2}{}{1 min}{1:0}
+    \ifnum\openspkthree = 1
+        \entryrow{Toastmaster}{Introduce Prepared Speaker 3}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Prepared Speaker 3}{\spkthree[project]--\spkthree[title]}{\spkthree[name]}{\spkthree[duration]}{\spkthreetime}
+        \entryrow{}{Make Comments on Speaker 3}{}{1 min}{1:0}
+    \fi
+    \ifnum\openspkfour = 1
+        \entryrow{Toastmaster}{Introduce Prepared Speaker 4}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Prepared Speaker 4}{\spkfour[project]--\spkfour[title]}{\spkfour[name]}{\spkfour[duration]}{\spkfourtime}
+        \entryrow{}{Make Comments on Speaker 4}{}{1 min}{1:0}
+    \fi
+    \ifnum\openspkfive = 1
+        \entryrow{Toastmaster}{Introduce Prepared Speaker 5}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Prepared Speaker 5}{\spkfive[project]--\spkfive[title]}{\spkfive[name]}{\spkfive[duration]}{\spkfivetime}
+        \entryrow{}{Make Comments on Speaker 5}{}{1 min}{1:0}
+    \fi
+    \entryrow{Toastmaster}{Introduce Speech Evaluator 1}{\tm[name]}{0--30 sec}{0:30}
+    \entryrow{Evaluator 1}{Evaluate Speaker 1}{\evlone[name]}{2--3 min}{3:0}
+    \entryrow{Toastmaster}{Introduce Speech Evaluator 2}{\tm[name]}{0--30 sec}{0:30}
+    \entryrow{Evaluator 2}{Evaluate Speaker 2}{\evltwo[name]}{2--3 min}{3:0}
+    \ifnum\openspkthree = 1
+        \entryrow{Toastmaster}{Introduce Speech Evaluator 3}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Evaluator 3}{Evaluate Speaker 3}{\evlthree[name]}{2--3 min}{3:0}
+    \fi
+    \ifnum\openspkfour = 1
+        \entryrow{Toastmaster}{Introduce Speech Evaluator 4}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Evaluator 4}{Evaluate Speaker 4}{\evlfour[name]}{2--3 min}{3:0}
+    \fi
+    \ifnum\openspkfive = 1
+        \entryrow{Toastmaster}{Introduce Speech Evaluator 5}{\tm[name]}{0--30 sec}{0:30}
+        \entryrow{Evaluator 5}{Evaluate Speaker 5}{\evlfive[name]}{2--3 min}{3:0}
+    \fi
+%
+    \sessionrow{Report Session}
+    \entryrow{Toastmaster}{Call Up Report}{\tm[name]}{0--30 sec}{0:30}
+    \entryrow{Timer}{Time Report}{\timer[name]}{1--2 min}{2:0}
+    \entryrow{}{Silence for Voting Best}{}{1 min}{1:0}
+    \entryrow{Sergeant at Arms}{Announce Best \& Photo Time}{\saa}{1 min}{1:0}
+    \entryrow{President}{Closing Speech}{\president}{1--2 min}{2:0}
+}%
+\fi    
+%
+
 
 \supereject\end
 
